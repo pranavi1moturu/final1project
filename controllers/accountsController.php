@@ -6,7 +6,6 @@
  * Time: 5:32 PM
  */
 
-
 //each page extends controller and the index.php?page=tasks causes the controller to be called
 class accountsController extends http\controller
 {
@@ -23,8 +22,14 @@ class accountsController extends http\controller
 
     public static function all()
     {
-
-        $records = accounts::findAll();
+		//By IPE TEAM
+		session_start();
+		$userID = @$_SESSION["userID"];
+		if(!$userID) {
+			header("Location: index.php?page=homepage&action=show");
+		}
+		
+        $records = array(accounts::findOne($userID)); //accounts::findAll();
         self::getTemplate('all_accounts', $records);
 
     }
@@ -36,6 +41,13 @@ class accountsController extends http\controller
     //this is to register an account i.e. insert a new account
     public static function register()
     {
+		//By IPE TEAM
+		session_start();
+		$userID = @$_SESSION["userID"];
+		if($userID) {
+			header("Location: index.php?page=accounts&action=all");
+		}
+		
         //https://www.sitepoint.com/why-you-should-use-bcrypt-to-hash-stored-passwords/
         //USE THE ABOVE TO SEE HOW TO USE Bcrypt
         self::getTemplate('register');
@@ -119,30 +131,29 @@ class accountsController extends http\controller
         //        $record = accounts::findUser($_POST['email']);
 
         $user = accounts::findUserbyEmail($_REQUEST['email']);
-
-
-        if ($user == FALSE) {
+        if($user == FALSE) {
             echo 'user not found';
         } else {
-
             if($user->checkPassword($_POST['password']) == TRUE) {
-
                 echo 'login';
-
                 session_start();
                 $_SESSION["userID"] = $user->id;
 
                 //forward the user to the show all todos page
-                print_r($_SESSION);
+                header("Location: index.php?page=accounts&action=all");
             } else {
                 echo 'password does not match';
             }
-
         }
-
-
-
-
+    }
+	
+	//By IPE TEAM
+    public static function logout()
+    {
+        session_start();
+        unset($_SESSION['userID']);
+		header("Location: index.php?page=homepage&action=show");
     }
 
 }
+?>
