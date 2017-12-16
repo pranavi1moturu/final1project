@@ -7,8 +7,8 @@
     <title>Todo Task Management</title>
     <meta name="description" content="Todo Task Management">
     <meta name="author" content="SitePoint">
-
-    <link rel="stylesheet" href="css/styles.css?v=1.0">
+<link rel="stylesheet" type="text/css" href="styles.css">
+   // <link rel="stylesheet" href="css/styles.css?v=1.0">
 
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
@@ -21,7 +21,9 @@
 //this how to print some data;
 $config = Manage::config();
 echo $config['site_name'];
-?></h1>
+?>
+</h1>
+<div align="center">
 <h1>Add Todos</h1>
 
 <?php
@@ -32,13 +34,11 @@ $user_data = accounts::findUserbyId($userID);
 <h1>Hi <?=$user_data->fname?></h1>
 								
 <ul>
-<li><a href="index.php?page=accounts&action=all">My Account</a>
-</li>
-<li><a href="index.php?page=tasks&action=all">All Todos</a>
-</li>
-<li>
+<a href="index.php?page=accounts&action=all">My Account</a>
+
+<a href="index.php?page=tasks&action=all">All Todos</a>
+
 <a href="index.php?page=accounts&action=logout">Logout</a>
-</li>
 </ul>
 
 <form action="index.php?page=tasks&action=save" method="post">
@@ -49,5 +49,6 @@ $user_data = accounts::findUserbyId($userID);
 </form>
 <a href="index.php?page=tasks&action=all">Back</a>
 <script src="js/scripts.js"></script>
+</div>
 </body>
 </html>
