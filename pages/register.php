@@ -7,8 +7,8 @@
     <title>Todo Task Management</title>
     <meta name="description" content="Todo Task Management">
     <meta name="author" content="SitePoint">
-
-    <link rel="stylesheet" href="css/styles.css?v=1.0">
+<link rel="stylesheet" type="text/css" href="styles.css">
+    //<link rel="stylesheet" href="css/styles.css?v=1.0">
 
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
@@ -26,7 +26,7 @@ echo $config['site_name'];
 <h2>Register</h2>
 
 <form action="index.php?page=accounts&action=register" method="post">
-//<marquee><h1> TODO TASK REGISTRATION WELCOME YOU</h1></marquee>
+<h1> TODO TASK REGISTRATION </h1>
     First name: <input type="text" name="fname" placeholder="first name"required><br>
     Last name: <input type="text" name="lname"placeholder="lastname" required><br>
     Email or username: <input type="email" name="email" placeholder="username"required><br>
