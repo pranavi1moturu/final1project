@@ -17,14 +17,30 @@ class accounts extends \database\collection
          //grab the only record for find one and return as an object
             $recordsSet = self::getResults($sql, $email);
 
+            if (is_null($recordsSet))
+             {
+                return FALSE;
+            } else {
+                return $recordsSet[0];
+            }
+    }
+	
+	//By IPE TEAM
+	public static function findUserbyId($id)
+    {
+
+            $tableName = get_called_class();
+            $sql = 'SELECT * FROM ' . $tableName . ' WHERE id = ?';
+
+         //grab the only record for find one and return as an object
+            $recordsSet = self::getResults($sql, $id);
+
             if (is_null($recordsSet)) {
                 return FALSE;
             } else {
                 return $recordsSet[0];
             }
-
-
-
     }
 }
 
+?>
