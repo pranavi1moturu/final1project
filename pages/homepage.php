@@ -4,11 +4,11 @@
 <head>
     <meta charset="utf-8">
 <div align='center'>
-    <title><h2>Todo Task Management</h2></title>
+    <title><div align='center'><h2>Todo Task Management</h2></div></title>
     <meta name="description" content="Todo Task Management">
     <meta name="author" content="SitePoint">
 
-    <link rel="stylesheet" href="css/styles.css?v=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
 
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
