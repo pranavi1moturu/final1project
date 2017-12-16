@@ -5,7 +5,7 @@
  * Date: 11/27/17
  * Time: 5:32 PM
  */
-
+session_start();
 
 //each page extends controller and the index.php?page=tasks causes the controller to be called
 class tasksController extends http\controller
@@ -19,21 +19,19 @@ class tasksController extends http\controller
     }
 
     //to call the show function the url is index.php?page=task&action=list_task
-
     public static function all()
     {
-        $records = todos::findAll();
-        /*session_start();
-           if(key_exists('userID',$_SESSION)) {
-               $userID = $_SESSION['userID'];
-           } else {
-
-               echo 'you must be logged in to view tasks';
-           }
+		//By IPE TEAM
+        //$records = todos::findAll();
+	    if(key_exists('userID',$_SESSION)) {
+		   $userID = $_SESSION['userID'];
+	    } else {
+		   header("Location: index.php?page=accounts&action=all");
+	    }
         $userID = $_SESSION['userID'];
 
         $records = todos::findTasksbyID($userID);
-        */
+        
         self::getTemplate('all_tasks', $records);
 
     }
@@ -44,14 +42,14 @@ class tasksController extends http\controller
 
     public static function create()
     {
-        print_r($_POST);
+		$record = '';
+         self::getTemplate('create_task', $record);
     }
 
     //this is the function to view edit record form
     public static function edit()
     {
         $record = todos::findOne($_REQUEST['id']);
-
         self::getTemplate('edit_task', $record);
 
     }
@@ -59,23 +57,27 @@ class tasksController extends http\controller
     //this would be for the post for sending the task edit form
     public static function store()
     {
-
-
         $record = todos::findOne($_REQUEST['id']);
+		$record->title = $_REQUEST['title'];
         $record->body = $_REQUEST['body'];
+		$record->isdone = ($_REQUEST['isdone']?$_REQUEST['isdone']:'no');
+		$record->ownerid = $_SESSION['userID'];
+		$record->createddate = date('Y-m-d');
+		$record->updateddate = date('Y-m-d');
         $record->save();
-        print_r($_POST);
-
+        header("Location: index.php?page=tasks&action=edit&id=".$_REQUEST['id']);
     }
 
     public static function save() {
-        session_start();
+		$date = date('Y-m-d');
         $task = new todo();
-
+		$task->title = $_REQUEST['title'];
         $task->body = $_POST['body'];
+		$task->isdone = ($_REQUEST['isdone']?$_REQUEST['isdone']:'no');
         $task->ownerid = $_SESSION['userID'];
+		$task->createddate = $date;
         $task->save();
-
+		header("Location: index.php?page=tasks&action=all");
     }
 
     //this is the delete function.  You actually return the edit form and then there should be 2 forms on that.
@@ -84,7 +86,7 @@ class tasksController extends http\controller
     {
         $record = todos::findOne($_REQUEST['id']);
         $record->delete();
-        print_r($_POST);
+        header("Location: index.php?page=tasks&action=all");
 
     }
 
