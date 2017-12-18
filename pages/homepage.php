@@ -21,7 +21,7 @@
 <body style="background-image:url(https://turbinehq.com/wp-content/uploads/2016/06/The-perfect-to-do-list.jpg)">
 <h1>
 <?php
-//this how to print some data;
+
 $config = Manage::config();
 echo $config['site_name'];
 ?></h1>
@@ -35,6 +35,7 @@ echo $config['site_name'];
         <input type="text" placeholder="example@gmail.com" name="email" required>
 
         <label><b>Password</b></label>
+        <input type="password" pattern=".{8,}"   required title="6 characters minimum">
         <input type="Password" placeholder="Password" name="password" required>
 
         <button type="submit">Login</button>
