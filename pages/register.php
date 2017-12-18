@@ -35,8 +35,8 @@ echo $config['site_name'];
     Phone: <input type="tel" name="phone"placeholder="phone no" required><br>
     Birthday: <input type="text" name="birthday" placeholder="yyyy-mm-dd" required><br>
     Gender: <input type="radio" name="gender" value="male" checked="checked">Male <input type="radio" name="gender" value="female"> Female<br>
-    
-    Password: <input type="password" pattern=".{6,}"   required title="6 characters minimum"><br>
+    Password: <input type="password" name="password" required><br>
+   
    
     <input type="submit" value="Submit form">
 </form>
