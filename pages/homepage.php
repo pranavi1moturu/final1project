@@ -5,7 +5,7 @@
     <meta charset="utf-8">
 <div align='center'>
 
-    <title><div align='center'><h2>Todo Task Management</h2></div></title>
+    <title><div align='center'><h1><b>Todo Task Management</b></h1></div></title>
     <meta name="description" content="Todo Task Management">
     <meta name="author" content="SitePoint">
 <img src="b1.jpg"/> 
@@ -31,7 +31,7 @@ echo $config['site_name'];
 
 <form action="index.php?page=accounts&action=login" method="POST">
     <div class="container">
-        <h1><label><b>Username</b></label></h1>
+        <label><b>Username</b></label>
         <input type="text" placeholder="example@gmail.com" name="email" required>
 
         <label><b>Password</b></label>
