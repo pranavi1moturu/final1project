@@ -35,7 +35,7 @@ echo $config['site_name'];
         <input type="text" placeholder="example@gmail.com" name="email" required>
 
         <label><b>Password</b></label>
-        <input type="password" pattern=".{8,}"   required title="6 characters minimum">
+        
         <input type="Password" placeholder="Password" name="password" required>
 
         <button type="submit">Login</button>
