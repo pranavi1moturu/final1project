@@ -8,6 +8,7 @@
     <meta name="description" content="Todo Task Management">
     <meta name="author" content="SitePoint">
 <link rel="stylesheet" type="text/css" href="styles.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     //<link rel="stylesheet" href="css/styles.css?v=1.0">
 
     <!--[if lt IE 9]>
@@ -16,7 +17,7 @@
 </head>
 
 <body>
-
+<body style="background-image:url(https://blog.trello.com/hubfs/to_do_list_feature.png?t=1513132646028)">
 <h1>
 <?php
 //this how to print some data;
